@@ -1,0 +1,203 @@
+.title {
+    @extend %CS;
+    color: $darkGrey;
+    &::before {
+        content: "";
+        background-color: $purple;
+        flex: 0 0 toRem(6);
+        width: 6px;
+        height: toEm(30, 36);
+        margin-top: toEm(5, 36);
+        border-radius: toRem(10);
+    }
+    display: flex;
+    gap: toEm(20, 36);
+    align-items: flex-start;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: toRem(0.68);
+    @include adaptiveValue("font-size", 34, 24);
+    &--margin {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 70, 20);
+        }
+    }
+}
+.item-product {
+    position: relative;
+    display: grid;
+    gap: toRem(30);
+    &--category {
+        gap: toRem(25);
+    }
+    &__picture-link {
+        display: block;
+    }
+
+    &__image {
+        aspect-ratio: 282/370;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: toRem(10);
+        .item-product--category & {
+            aspect-ratio: 270 / 393;
+        }
+    }
+
+    &__body {
+        display: grid;
+        grid-template: auto auto / 1fr auto;
+        gap: toRem(5);
+        column-gap: toRem(35);
+    }
+
+    &__title {
+        font-weight: 600;
+        color: $darkGrey;
+        min-width: 0;
+        .item-product--category & {
+            font-size: toRem(17);
+            font-weight: 700;
+        }
+    }
+
+    &__link-title {
+        text-overflow: ellipsis;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        @media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__label {
+        grid-row: 2 / 3;
+        color: $liteGrey1;
+        font-size: toRem(14);
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    &__link,
+    &__price {
+        grid-column: 2 / 3;
+        grid-row: span 2;
+    }
+    &__link {
+        display: flex;
+        align-items: center;
+        &::before {
+            transition: color 0.3s;
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                color: black;
+            }
+        }
+    }
+    &__price {
+        border-radius: toRem(8);
+        background-color: $liteGrey;
+        padding: toRem(10) toRem(20);
+        color: $darkGrey;
+        text-align: center;
+        font-family: Causten;
+        font-size: toRem(14);
+        font-weight: 700;
+        line-height: normal;
+    }
+    &__favorite {
+        position: absolute;
+        top: toRem(27);
+        right: toRem(21);
+        border-radius: 50%;
+        width: toRem(32);
+        height: toRem(32);
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::before {
+            transition: color 0.3s;
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}
+.button {
+    font-family: Causten;
+    padding: toRem(20) toRem(52);
+    border-radius: toRem(8);
+    background-color: $purple;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: 500;
+    font-size: toRem(18);
+    text-align: center;
+    line-height: 1.22;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #6620c1;
+            box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+    &:focus {
+        background-color: #6620c1;
+    }
+    &:disabled {
+        background-color: #eaeaea;
+        color: #807d7e;
+        cursor: default;
+    }
+    &--border {
+        border-radius: toRem(8);
+        border: toRem(1) solid $darkGrey;
+        background-color: #ffffff;
+        color: $purple;
+        @media (any-hover: hover) {
+            &:hover {
+                border-radius: toRem(8);
+                border: toRem(1) solid $darkGrey;
+                background-color: rgba(102, 32, 193, 0.03);
+            }
+        }
+        &:focus {
+            border: toRem(1) solid $purple;
+            background: rgba(102, 32, 193, 0.03);
+        }
+        &:disabled {
+            border: none;
+            background-color: #eaeaea;
+            color: #807d7e;
+            cursor: default;
+        }
+    }
+    &--white {
+        background-color: #ffffff;
+        color: $darkGrey;
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $purple;
+                box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
+            }
+        }
+        &:focus {
+            background-color: rgb(247, 7, 247);
+            box-shadow: none;
+        }
+        &:disabled {
+            background-color: #ffffff;
+            color: #807d7e;
+            cursor: default;
+            box-shadow: none;
+        }
+    }
+}
